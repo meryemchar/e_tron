@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 import com.example.e_tron.entities.Voiture;
 @Repository
 public interface VoitureDao extends JpaRepository<Voiture, Integer> {
+	
 
 }

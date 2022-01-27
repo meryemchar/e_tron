@@ -12,6 +12,7 @@ public interface AbonnementService {
 	public Abonnement getAbonnementById(Integer id);
 	public void deleteAbonnement(Integer id);
 	public Abonnement updateAbonnement(Abonnement v);
+	public Abonnement getbyType(String type);
 	
 
 }

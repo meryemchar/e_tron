@@ -12,5 +12,6 @@ public interface CarteService {
 	public Carte getCarteById(Integer id);
 	public void deleteCarte(Carte v);
 	public Carte updateCarte(Carte v);
+	public Carte getByNum(String num);
 
 }

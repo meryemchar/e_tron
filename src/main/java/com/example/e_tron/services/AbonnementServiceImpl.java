@@ -43,6 +43,13 @@ public class AbonnementServiceImpl implements AbonnementService{
 		// TODO Auto-generated method stub
 		return abonnementdao.save(v);
 	}
+
+	@Override
+	public Abonnement getbyType(String type) {
+		// TODO Auto-generated method stub
+		List<Abonnement> a=abonnementdao.findByType(type);
+		return a.get(0);
+	}
 	
 	
 

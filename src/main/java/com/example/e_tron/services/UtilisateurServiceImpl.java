@@ -22,21 +22,14 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 	}
 
 	@Override
-	public List<Utilisateur> getAllUtilisateur() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Utilisateur getUtilisateurById(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		return utilisateurdao.getById(id);
 	}
 
 	@Override
 	public void deleteUtilisateur(Utilisateur v) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 
 	@Override
@@ -44,5 +37,30 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<Utilisateur> getSimpleUtilisateur() {
+		
+		return utilisateurdao.findByRole("user");
+	}
+
+	@Override
+	public List<Utilisateur> getAbonnees() {
+		
+		return utilisateurdao.findByEstabonne(true);
+	}
+
+	@Override
+	public List<Utilisateur> getNonAbonnees() {
+		return utilisateurdao.findByEstabonne(false);
+	}
+
+	@Override
+	public Utilisateur getByEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 }

@@ -53,4 +53,10 @@ public class CarteServiceImpl implements CarteService{
 		return null;
 	}
 
+	@Override
+	public Carte getByNum(String num) {
+		List<Carte> listeCarte=cartedao.findByNumcarte(num);
+		return listeCarte.get(0);
+	}
+
 }

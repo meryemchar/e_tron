@@ -11,11 +11,11 @@ import javax.validation.constraints.NotBlank;
 public class Voiture {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@NotBlank(message = "Le matricule ne peut pas être vide")
+	//@NotBlank(message = "Le matricule ne peut pas être vide")
 	private String matricule;
-	@NotBlank(message = "Le modele ne peut pas être vide")
+	//@NotBlank(message = "Le modele ne peut pas être vide")
 	private String modele;
-	@NotBlank(message = "La couleur ne peut pas être vide")
+	//@NotBlank(message = "La couleur ne peut pas être vide")
 	private String couleur;
 	@ManyToOne 
 	private Utilisateur utilisateur;
@@ -99,7 +99,6 @@ public class Voiture {
 	public void setAbonnement(Abonnement abonnement) {
 		this.abonnement = abonnement;
 	}
-
 
 	
 }

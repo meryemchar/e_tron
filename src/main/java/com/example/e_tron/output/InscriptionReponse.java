@@ -1,4 +1,4 @@
-package com.example.e_tron.response;
+package com.example.e_tron.output;
 
 import org.springframework.http.ResponseEntity;
 

@@ -10,7 +10,7 @@ public interface AbonnementService {
 	public Abonnement createAbonnement(Abonnement v);
 	public List<Abonnement> getAllAbonnement();
 	public Abonnement getAbonnementById(Integer id);
-	public void deleteAbonnement(Abonnement v);
+	public void deleteAbonnement(Integer id);
 	public Abonnement updateAbonnement(Abonnement v);
 	
 

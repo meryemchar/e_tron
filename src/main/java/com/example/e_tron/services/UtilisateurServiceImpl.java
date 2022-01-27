@@ -16,7 +16,8 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 
 	@Override
 	public Utilisateur createUtilisateur(Utilisateur u) {
-		
+		u.setRole("user");
+		u.setEstabonne(false);
 		return utilisateurdao.save(u);
 	}
 

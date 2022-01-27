@@ -2,12 +2,16 @@ package com.example.e_tron.entities;
 
 
 import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Abonnement {
@@ -16,7 +20,8 @@ public class Abonnement {
 	private Integer id;
 	@NotBlank(message = "Le type d'abonnement ne peut pas être vide")
 	private String type;
-	@NotBlank(message = "Le tarif ne peut pas être vide")
+	//@NotBlank(message = "Le tarif ne peut pas être vide")
+	@Column(nullable = false)
 	private double tarif;
 	@OneToMany(mappedBy ="abonnement")
 	private List<Voiture> listevoiture;
@@ -66,7 +71,7 @@ public class Abonnement {
 		this.tarif = tarif;
 	}
 
-
+@JsonIgnore
 	public List<Voiture> getListevoiture() {
 		return listevoiture;
 	}

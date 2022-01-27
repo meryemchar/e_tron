@@ -1,7 +1,6 @@
 package com.example.e_tron.services;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.e_tron.dao.AbonnementDao;
@@ -18,31 +17,31 @@ public class AbonnementServiceImpl implements AbonnementService{
 	@Override
 	public Abonnement createAbonnement(Abonnement v) {
 		// TODO Auto-generated method stub
-		return null;
+		return abonnementdao.save(v);
 	}
 
 	@Override
 	public List<Abonnement> getAllAbonnement() {
 		// TODO Auto-generated method stub
-		return null;
+		return abonnementdao.findAll();
 	}
 
 	@Override
 	public Abonnement getAbonnementById(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		return abonnementdao.getById(id);
 	}
 
 	@Override
-	public void deleteAbonnement(Abonnement v) {
+	public void deleteAbonnement(Integer id) {
 		// TODO Auto-generated method stub
-		
+		abonnementdao.deleteById(id);
 	}
 
 	@Override
 	public Abonnement updateAbonnement(Abonnement v) {
 		// TODO Auto-generated method stub
-		return null;
+		return abonnementdao.save(v);
 	}
 	
 	

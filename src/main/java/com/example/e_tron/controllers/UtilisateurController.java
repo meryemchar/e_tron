@@ -9,6 +9,9 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -23,11 +26,13 @@ import com.example.e_tron.entities.Carte;
 import com.example.e_tron.entities.Utilisateur;
 import com.example.e_tron.entities.Voiture;
 import com.example.e_tron.input.AbonnementInput;
+import com.example.e_tron.input.Auth_Input;
 import com.example.e_tron.output.InscriptionReponse;
 import com.example.e_tron.services.CarteService;
+import com.example.e_tron.services.CustomUserDetailsService;
 import com.example.e_tron.services.UtilisateurService;
 import com.example.e_tron.services.VoitureService;
-
+import com.example.e_tron.util.JwtUtil;
 
 
 @RestController
@@ -40,6 +45,12 @@ public class UtilisateurController {
 	CarteService carteservice;
 	@Autowired
 	VoitureService voitureservice;
+	@Autowired
+	private JwtUtil jwtUtil;
+	@Autowired
+	private AuthenticationManager authenticationmanager;
+	@Autowired
+	private CustomUserDetailsService userdetailsService;
 	
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(MethodArgumentNotValidException.class)
@@ -92,6 +103,21 @@ public class UtilisateurController {
 	public List<Utilisateur> affichageNonAbonnes()
 	{
 		return utilisateurservice.getNonAbonnees();
+	}
+	
+	
+	@PostMapping("/connexion")
+	public String authentifiaction(@RequestBody Auth_Input auth) throws Exception
+	{
+		 try {
+	            authenticationmanager.authenticate(
+	                    new UsernamePasswordAuthenticationToken(auth.getEmail(), auth.getMdp())
+	            );
+	        } catch (Exception ex) {
+	            throw new Exception("email ou mot de passe invalid");
+	        }
+		 final UserDetails userd=userdetailsService.loadUserByUsername(auth.getEmail());
+	        return jwtUtil.generateToken(auth.getEmail()); 
 	}
 	
 	

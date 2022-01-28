@@ -14,6 +14,8 @@ import javax.validation.constraints.NotBlank;
 //import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 //import org.hibernate.validator.constraints.NotBlank;
 @Entity
 public class Utilisateur {
@@ -40,7 +42,7 @@ public class Utilisateur {
 	private String mdp;
 	private Boolean estabonne;
 	private String role;
-	
+	@JsonIgnore
 	@OneToMany(mappedBy ="utilisateur")
 	private List<Voiture> listevoiture;
 	

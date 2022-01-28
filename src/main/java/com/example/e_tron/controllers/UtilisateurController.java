@@ -14,6 +14,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -107,6 +108,15 @@ public class UtilisateurController {
 		}
 	}
 	
-	
-	//public ResponseEntity<String> ModifierAbonnemnt(@Valid @RequestBody AbonnementInput a)
+	@PutMapping("/modifierAbonnement")
+	public ResponseEntity<Object> ModifierAbonnemnt(@Valid @RequestBody AbonnementInput a)
+	{
+		try {
+			Voiture v=voitureservice.modifierAbonnement(a);
+			return new ResponseEntity<Object>(v,HttpStatus.ACCEPTED );
+		} catch (Exception e) {
+		return new ResponseEntity<Object>(e.getMessage(),HttpStatus.BAD_REQUEST);
+		}
+		
+	}
 }
